@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deleteBlog, getAllBlogs, getOneBlog, newBlogPost, updateBlog } from "../controllers/blog.controller.js";
+import { deleteBlog, filterByAuthor, filterByCategory, getAllBlogs, getOneBlog, newBlogPost, updateBlog } from "../controllers/blog.controller.js";
 import { isLoggedIn } from "../middlewares/authentication.js";
 
 const router = Router();
@@ -12,6 +12,10 @@ router.delete('/deleteBlog', isLoggedIn, deleteBlog);
 
 // Route for getting all blogs
 router.get('/getAllBlogs', getAllBlogs);
+
+router.get('/filterByCategory' , filterByCategory);
+
+router.get('/filterByAuthor' , filterByAuthor)
 
 // Route for getting a specific blog by ID
 router.get('/:blogId', getOneBlog);
